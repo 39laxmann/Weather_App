@@ -86,7 +86,9 @@ class WeatherScreen extends StatelessWidget{
           ),
 
 
-          Padding(padding: EdgeInsets.all(20),
+          Padding(padding: EdgeInsets.only(
+            top: 20, bottom: 20,
+          ),
           child: Text("Weather Forecast",
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -99,32 +101,35 @@ class WeatherScreen extends StatelessWidget{
 
 
           //weather forecast card
-          Row(
-            children: [
-              //Card 1 for weather forecast
-              SizedBox(
-                width: 100,
-                height: 120,
-                child: Card(
-                  child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      children: [
-                        Text("9:00"),
-                        Icon(Icons.cloud),
-                        Text("301.91"),
-                                    
-                      ],
-                                    
-                                    
-                                    
-                    ),
-                  ),
-                ),
-              ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                //Card 1 for weather forecast
+                HourlyForecast(),
 
-            ],
-            ),
+                SizedBox(width: 5,),
+            
+                //Card 2 for weather forecast
+                HourlyForecast(),
+                SizedBox(width: 5,),
+
+                
+
+                //Card 3 for weather forecast
+                HourlyForecast(),
+              SizedBox(width: 5,),
+
+                //Card 4 for weather forecast
+                HourlyForecast(),
+              SizedBox(width: 5,),
+            
+                //Card 5 for weather forecast
+                HourlyForecast(),
+               
+              ],
+              ),
+          ),
 
          
 
@@ -133,13 +138,24 @@ class WeatherScreen extends StatelessWidget{
           //Additional Information card
          
           const SizedBox(
-            height: 60
-          ),
-            
-           Placeholder(
-            fallbackHeight: 100,
+            height: 20
           ),
           
+          Text("Additional Information",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+            
+
+          ) ,
+          ),
+          const SizedBox(
+            height: 30
+          ),
+          
+          const SizedBox(
+            height: 16,
+          )
         
 
         ],
@@ -148,4 +164,43 @@ class WeatherScreen extends StatelessWidget{
     );
   }
 
+}
+
+
+class HourlyForecast extends StatelessWidget{
+  const HourlyForecast({super.key});
+  @override
+  Widget build(BuildContext context){
+    return SizedBox(
+                  width: 120,
+                  height: 132,
+                  child: Card(
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          
+                          Text("09:00",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          ),
+                          const SizedBox(height: 6,),
+                          Icon(Icons.water_drop_outlined,
+                          color: Colors.white,
+                          size: 32,),
+                          const SizedBox(height: 5,),
+                          Text("301.73"),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+                
+  }
 }
