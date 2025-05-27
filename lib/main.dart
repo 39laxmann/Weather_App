@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/weather_app_materialapp.dart';
+import 'weather_screen.dart';
 
 void main(){
-  runApp(MyApp());
+  runApp(MyWeatherApp());
 
 }
 
 
-class MyApp extends StatelessWidget{
-  const MyApp({super.key});
+class MyWeatherApp extends StatelessWidget{
+  // const MyWeatherApp({Key? key}): super(key: key);
+  const MyWeatherApp({super.key});
+  
   @override
   Widget build(BuildContext context){
     return MaterialApp(
-      home: MyWeatherApp(),
+      
+      theme: ThemeData.dark(useMaterial3: true).copyWith(),
+      home: WeatherScreen()
       
   
     );
