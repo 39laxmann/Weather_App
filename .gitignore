@@ -11,6 +11,7 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+lib/secret.dart
 
 # IntelliJ related
 *.iml
